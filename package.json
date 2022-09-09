@@ -1,0 +1,18 @@
+{
+  "name": "balah7_bot",
+  "version": "1.0.0",
+  "description": "bot feito com djs v14",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "balah7",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "discord.js": "^14.3.0",
+    "dotenv": "^16.0.2",
+    "node-fetch": "^2.6.7",
+    "quick.db": "^7.1.3"
+  }
+}
