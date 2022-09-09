@@ -10,7 +10,7 @@ module.exports = {
         const up = Math.floor(client.uptime / 60000) % 60;
 
         const botbutton = new dc.ButtonBuilder()
-        .setLabel(`Invite`)
+        .setLabel("Invite")
         .setEmoji('📗')
         .setStyle(5)
         .setURL(`https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`) //Link do invite
@@ -37,6 +37,6 @@ module.exports = {
                 {name: `Uptime:`, value: `${up} Minutos`, inline: true })
              .setThumbnail(client.user.displayAvatarURL())
 
-            message.reply({ embeds: [e], components: [botbutton], content: `${message.member}`})
+            message.reply({ embeds: [e], components: [b], content: `${message.member}`})
       
 }};
