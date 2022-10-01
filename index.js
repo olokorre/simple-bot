@@ -1,6 +1,6 @@
 const dc = require('discord.js');
 
-const client = new dc.Client({ intents: 3276799, partials: ['CHANNEL', 'USER', 'MESSAGE']});
+const client = new dc.Client({ intents: 3276799, partials: [dc.Partials.Channel, dc.Partials.User, dc.Partials.Message] });
 
 module.exports = client;
 
