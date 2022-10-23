@@ -5,7 +5,10 @@ const db = require('quick.db');
 
 client.on(`messageCreate`, async (message) => { //Créditos Ferinha. 
 
-    let prefix =  db.get(`prefixo-${message.guild.id}`) || app.bot.prefixo;
+    if(!message.guild) return;
+    if(mensagem.author.bot) return;
+
+    let prefix =  db.get(`prefixo-${message.guild?.id}`) || app.bot.prefixo;
   
     if(message.author.bot) return;
     if(message.channel.type === 1) return;
