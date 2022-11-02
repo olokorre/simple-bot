@@ -38,7 +38,7 @@ module.exports = {
 
     }
 
-    const membro = message.guil.members.cache.get(user.id);
+    const membro = message.guild.members.cache.get(user.id);
 
     if(!membro) {
 
