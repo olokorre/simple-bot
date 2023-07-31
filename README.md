@@ -19,7 +19,7 @@ npm i // Para instalar todas as dependências.
 
 ```Diff
 - chalk@3.0.0
-- discord.js@14.3.0
+- discord.js@14.11.0
 - dotenv@16.0.2
 - node-fetch@2.6.7
 - quick.db@7.1.3
