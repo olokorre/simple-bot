@@ -12,9 +12,10 @@ Comandos em prefixo com subpasta e aliases.<br>
 Pasta de eventos.<br>
 
 ## Npm's
+Para instalar todas as dependências.
 
-```js
-npm i // Para instalar todas as dependências.
+```sh
+npm i
 ```
 
 ```Diff
