@@ -9,7 +9,7 @@ client.commands = new dc.Collection();
 client.aliases = new dc.Collection();
 
 // Requires
-require('./handler')(client);
+require('./source/handler')(client);
 require('dotenv').config();
 const app = require('./app.json');
 const chalk = require('chalk');

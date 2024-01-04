@@ -1,6 +1,6 @@
-const client = require("../../index");
+const client = require("../../../index");
 const dc = require("discord.js");
-const app = require('../../app.json');
+const app = require('../../../app.json');
 const db = require('quick.db');
 
 client.on(`messageCreate`, async(msg) => {
