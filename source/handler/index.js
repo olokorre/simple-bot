@@ -1,6 +1,6 @@
 const fs = require("fs");
 const app = require('../../app.json');
-const chalk = require('chalk');
+const log = require("../infra/Log");
 
 module.exports = async (client) => {
 
@@ -27,23 +27,23 @@ module.exports = async (client) => {
     if (app.slash.guild_id) {
       const server = client.guilds.cache.get(app.slash.guild_id);
       if (!server) {
-        console.log(chalk.red(`(Slash) > Servidor de carregamento inválido.`));
+        log.error(`(Slash) > Servidor de carregamento inválido.`);
         process.exit();
       }
       try {
         server.commands.set(ArgsScommands);
-        console.log(chalk.hex(`#78807f`).bold(`(Slash) > Os comandos foram carregados em ${server.name}.`))
+        log.info(`(Slash) > Os comandos foram carregados em ${server.name}.`);
       } catch (e) {
-        console.log(chalk.hex(`#c72230`).bold(`(Slash) > Não foi possível carregar os comandos em ${server.name}.`));
+        log.error(`(Slash) > Não foi possível carregar os comandos em ${server.name}.`);
         process.exit();
       }
     } else {
       //Carregando no global.
       try {
         client.application.commands.set(ArgsScommands);
-        console.log(chalk.hex(`#78807f`).bold(`(Slash) > Os comandos foram carregados globalmente.`))
+        log.info(`(Slash) > Os comandos foram carregados globalmente.`);
       } catch (e) {
-        console.log(chalk.hex(`#c72230`).bold(`(Slash) > Não foi possível carregar os comandos globalmente.`));
+        log.error(`(Slash) > Não foi possível carregar os comandos globalmente.`);
         process.exit();
       }
     }
@@ -77,6 +77,6 @@ module.exports = async (client) => {
         });
       });
     });
-    console.log(chalk.hex(`#17750b`).bold(`(Eventos) > Eventos carregados.`))
+    log.info(`(Eventos) > Eventos carregados.`);
   });
 }

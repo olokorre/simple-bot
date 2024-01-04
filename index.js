@@ -12,16 +12,16 @@ client.aliases = new dc.Collection();
 require('./source/handler')(client);
 require('dotenv').config();
 const app = require('./app.json');
-const chalk = require('chalk');
+const log = require('./source/infra/Log');
 
 //Médoto de login do bot, tanto no .env tanto no .json
 client.login(process.env.DISCORD_TOKEN || app.bot.token_bot);
 
 //Anticrash para o bot não desligar caso haja um erro.
 process.on('uncaughtException', async (error, origin) => {
-    console.log(chalk.hex('#ff0000').bold(`❗ ${error}\n\n[${origin}]`))
+    log.error(`❗ ${error}\n\n[${origin}]`);
 });
 
 process.on('unhandRejection', async (reason, promise) => {
-    console.log(chalk.hex('#ff0000').bold(`❗ ${reason}\n\n[${promise}]`))
+    log.error(`❗ ${reason}\n\n[${promise}]`);
 });
