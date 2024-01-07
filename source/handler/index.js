@@ -1,15 +1,15 @@
-const fs = require("fs");
-const app = require('../../app.json');
-const log = require("../infra/Log");
+import { readdir, readdirSync } from "fs";
+import app from '../../app.js';
+import log from "../infra/Log";
 
-module.exports = async (client) => {
+export default async (client) => {
 
   //Puxando os comandos em slash!
   const ArgsScommands = [];
 
-  fs.readdir(`./source/SlashCommands/`, (err, fol) => {
+  readdir(`./source/SlashCommands/`, (err, fol) => {
     fol.forEach(subfol => {
-      fs.readdir(`./source/SlashCommands/${subfol}/`, (er, files) => {
+      readdir(`./source/SlashCommands/${subfol}/`, (er, files) => {
         files.forEach(command => {
           if (!command?.endsWith('.js')) return;
           command = require(`../SlashCommands/${subfol}/${command}`);
@@ -21,7 +21,7 @@ module.exports = async (client) => {
     });
   });
 
-  //Carregando os slash.
+  //Carregando os app.slash.
   client.on("ready", async () => {
     //Carregando em 1 servidor.
     if (app.slash.guild_id) {
@@ -50,8 +50,8 @@ module.exports = async (client) => {
   });
 
   //Carregando prefixo.
-  fs.readdirSync('./source/PrefixCommands/').forEach(subfol => {
-    const comandos = fs.readdirSync(`./source/PrefixCommands/${subfol}`).filter(arqv => arqv.endsWith(`.js`))
+  readdirSync('./source/PrefixCommands/').forEach(subfol => {
+    const comandos = readdirSync(`./source/PrefixCommands/${subfol}`).filter(arqv => arqv.endsWith(`.js`))
     for (let command of comandos) {
       let puxar = require(`../PrefixCommands/${subfol}/${command}`);
       if (puxar.name)
@@ -63,9 +63,9 @@ module.exports = async (client) => {
   });
 
   //Carregando os eventos.
-  fs.readdir(`./source/BotEventos/`, (err, fol) => {
+  readdir(`./source/BotEventos/`, (err, fol) => {
     fol.forEach(subfol => {
-      fs.readdir(`./source/BotEventos/${subfol}/`, (er, files) => {
+      readdir(`./source/BotEventos/${subfol}/`, (er, files) => {
         files.forEach(evnt => {
           if (!evnt.endsWith('.js')) return;
           const e = require(`../BotEventos/${subfol}/${evnt}`);

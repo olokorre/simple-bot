@@ -1,4 +1,4 @@
-const client = require("../../../index");
+const client = require("../../../index").default;
 const chalk = require('chalk');
 
 const useActivity = process.env.USE_ACTIVITY.toUpperCase() === "TRUE";

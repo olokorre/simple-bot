@@ -1,18 +1,16 @@
-const dc = require('discord.js');
+import app from './app.js';
+import log from './source/infra/Log.js';
+import DiscordClient from './source/infra/DiscordClitent.js';
+import { Partials } from 'discord.js';
 
-const client = new dc.Client({ intents: 3276799, partials: [dc.Partials.Channel, dc.Partials.User, dc.Partials.Message] });
+const client = new DiscordClient({ intents: 3276799, partials: [Partials.Channel, Partials.User, Partials.Message] });
 
-module.exports = client;
-
-client.slashCommands = new dc.Collection();
-client.commands = new dc.Collection();
-client.aliases = new dc.Collection();
+export default client;
 
 // Requires
-require('./source/handler')(client);
+// Requires
+require('./source/handler').default(client);
 require('dotenv').config();
-const app = require('./app.json');
-const log = require('./source/infra/Log');
 
 //Médoto de login do bot, tanto no .env tanto no .json
 client.login(process.env.DISCORD_TOKEN || app.bot.token_bot);

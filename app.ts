@@ -1,4 +1,4 @@
-{ 
+const app = { 
     "bot": {
         "prefixo": ".",
         "color": "Random",
@@ -14,3 +14,5 @@
     }
 
 }
+
+export default app;

@@ -1,20 +1,22 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
 
 const GREEN = "#17750b";
 const RED = "#ff0000";
 
+type ColorStack = typeof GREEN | typeof RED;
+
 class Log {
 
-    print(color, message) {
+    private print(color: ColorStack, message: string) {
         const enconded = chalk.hex(color).bold(message);
         console.log(enconded);
     }
 
-    info(message) {
+    info(message: string) {
         this.print(GREEN, message);
     }
 
-    error(message) {
+    error(message: string) {
         this.print(RED, message);
     }
 
@@ -22,4 +24,4 @@ class Log {
 
 const log = new Log();
 
-module.exports = log;
+export default log;

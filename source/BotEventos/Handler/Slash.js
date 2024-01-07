@@ -1,6 +1,6 @@
-const client = require("../../../index");
+const client = require("../../../index").default;
 const dc = require("discord.js");
-const app = require('../../../app.json');
+const app = require('../../../app.js');
 
 client.on(`interactionCreate`, async (interaction) => {
   const command = client.slashCommands.get(interaction.commandName);
