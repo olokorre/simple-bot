@@ -4,7 +4,7 @@
   "description": "bot feito com djs v14",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only -- index.js",
+    "dev": "ts-node-dev --respawn --transpile-only -- index.ts",
     "build": "tsc",
     "main": "tsc && node dist/index.js"
   },

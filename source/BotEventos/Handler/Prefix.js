@@ -1,12 +1,12 @@
-const client = require("../../../index").default;
-const dc = require("discord.js");
-const app = require('../../../app.js');
-const db = require('quick.db');
+import client from "../../../index";
+import { EmbedBuilder } from "discord.js";
+import app from '../../../app.js';
+import { get } from 'quick.db';
 
 client.on(`messageCreate`, async (message) => {
   if (!message.guild) return;
   if (message.author.bot) return;
-  let prefix = db.get(`prefixo-${message.guild?.id}`) || app.bot.prefixo;
+  let prefix = get(`prefixo-${message.guild?.id}`) || app.bot.prefixo;
   if (message.author.bot) return;
   if (message.channel.type === 1) return;
   if (!message.content.startsWith(prefix)) return;
@@ -21,7 +21,7 @@ client.on(`messageCreate`, async (message) => {
     command.run(client, message, args, app);
   } catch (e) {
     console.log(e);
-    const e1 = new dc.EmbedBuilder()
+    const e1 = new EmbedBuilder()
       .setDescription(`${app.emoji.nao} Não foi encontrado nenhum comando com o nome: \`${cmd}\`.`)
       .setColor(app.bot.color)
     message.reply({ embeds: [e1] })
